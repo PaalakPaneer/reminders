@@ -1,8 +1,3 @@
 discord.py #Main Library
 aiohttp #Async version of requests
-asyncpg #Database Library
-python-dotenv #Tp get .env file
-os
-random
-asyncio
-git+https://github.com/Rapptz/discord-ext-menus #menus
+
