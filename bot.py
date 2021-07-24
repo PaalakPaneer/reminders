@@ -31,7 +31,7 @@ def convert(time):
     
     return v * convertt[unit]
 
-@bot.command()
+@bot.command(help = "Syntax : !remind <insert time here(use s/m/h/d)> <insert reminder here>")
 async def remind(ctx, time, *content):
     seconds = int(convert(time))
     list_content = list(content)
@@ -40,5 +40,14 @@ async def remind(ctx, time, *content):
     embed = discord.Embed(title = "Reminder:", description = f'**```{listToStr}```**', color = ctx.author.color)
     embed.set_footer(icon_url = ctx.author.avatar_url, text = f"Requested by {ctx.author.name}")
     await ctx.send(ctx.author.mention, embed=embed)
+
+@bot.command(help = "Syntax : !embed <insert title here> ^ <insert description here>")
+async def embed(ctx):
+    g = ctx.message.content
+    a = g.replace('!embed','')
+    title, desc = a.split('^')  
+    embed = discord.Embed(title = title, description = desc, color = ctx.author.color)
+    embed.set_footer(icon_url = ctx.author.avatar_url, text = f"Requested by {ctx.author.name}")
+    await ctx.send(embed=embed)
 
 bot.run(TOKEN)
